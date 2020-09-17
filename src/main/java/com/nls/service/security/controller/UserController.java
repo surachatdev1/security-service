@@ -34,7 +34,8 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public User getUserById(@PathVariable Long id) {
-		return null;
+		
+		return userdao.findUserById(id);
 	}
 	
 	@PutMapping("/update")
@@ -43,8 +44,9 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteUser(Long id) {
-		
+	public String deleteUser(@PathVariable Long id) {
+		userdao.deleteUserById(id);
+		return "user id : "+id+" DELETED ";
 	}
 	
 
