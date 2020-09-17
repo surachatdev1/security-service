@@ -1,0 +1,9 @@
+2020-09-17 15:44:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (SEC_USER: ""ID"" INT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."SEC_USER"("ID","USERNAME","FULLNAME")VALUES(?,?,?) [22018-200]
+2020-09-17 15:44:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (SEC_USER: ""ID"" INT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."SEC_USER"("ID","USERNAME","FULLNAME")VALUES(?,?,?) [22018-200]
+2020-09-17 16:19:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO SEC_USER(ID,USERNAME,FULLNAME VALUES[*](?,?,?)"; expected ",, )"; SQL statement:
+insert into SEC_USER(ID,USERNAME,FULLNAME values(?,?,?) [42001-200]
