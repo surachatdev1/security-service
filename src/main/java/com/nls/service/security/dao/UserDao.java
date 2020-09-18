@@ -27,16 +27,16 @@ public class UserDao {
 	}
 
 	public User findUserById(Long id) {
-		String sql = "select * from SEC_USER where ID= ?";
+		String sql = "select * from SEC_USER where ID = ? ";
 		SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
 		User user = new User();
-		if (rs.getRow()>0) {
-			rs.next();
+
+		if (rs.first()) {
+			
 			user.setId(rs.getLong("ID"));
 			user.setFullname(rs.getString("FULLNAME"));
 			user.setUsername(rs.getString("USERNAME"));
 			return user;
-
 		} else {
 			return null;
 		}
