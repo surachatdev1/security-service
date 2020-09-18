@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -26,20 +25,25 @@ public class UserDao {
 		return users;
 	}
 
-	public User findUserById(Long id) {
-		String sql = "select * from SEC_USER where ID = ? ";
-		SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
-		User user = new User();
+	/*
+	 * public User findUserById(Long id) { String sql =
+	 * "select * from SEC_USER where ID = ? "; SqlRowSet rs =
+	 * jdbcTemplate.queryForRowSet(sql, id); User user = new User();
+	 * 
+	 * if (rs.first()) {
+	 * 
+	 * user.setId(rs.getLong("ID")); user.setFullname(rs.getString("FULLNAME"));
+	 * user.setUsername(rs.getString("USERNAME"));
+	 * 
+	 * return user; } else { return null; }
+	 * 
+	 * }
+	 */
 
-		if (rs.first()) {
-			
-			user.setId(rs.getLong("ID"));
-			user.setFullname(rs.getString("FULLNAME"));
-			user.setUsername(rs.getString("USERNAME"));
-			return user;
-		} else {
-			return null;
-		}
+	public User findUserById(Long id) {
+		String sql = "select * from SEC_USER where id = " + id;
+		List<User> users = jdbcTemplate.query(sql, new UserRowMaper());
+		return users.size() == 0 ? null : users.get(0);
 
 	}
 
