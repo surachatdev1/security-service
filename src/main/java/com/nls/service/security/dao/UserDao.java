@@ -53,7 +53,7 @@ public class UserDao {
 	}
 
 	public User addNew(User newUser) {
-		newUser.setId(6L);
+		
 		String sql = "insert into SEC_USER(ID,USERNAME,FULLNAME) values(?,?,?)";
 		jdbcTemplate.update(sql, newUser.getId(), newUser.getUsername(), newUser.getFullname());
 		return newUser;
