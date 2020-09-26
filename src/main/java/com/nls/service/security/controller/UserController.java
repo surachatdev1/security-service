@@ -41,7 +41,8 @@ public class UserController {
 	
 	@PutMapping("/update")
 	public User updateUser(@RequestBody User user) {
-		return null;	
+		User updatedUser = userdao.updateUser(user);
+		return updatedUser;	
 	}
 	
 	@DeleteMapping("/{id}")

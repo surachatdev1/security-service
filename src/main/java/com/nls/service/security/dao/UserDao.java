@@ -53,10 +53,16 @@ public class UserDao {
 	}
 
 	public User addNew(User newUser) {
-		
+
 		String sql = "insert into SEC_USER(ID,USERNAME,FULLNAME) values(?,?,?)";
 		jdbcTemplate.update(sql, newUser.getId(), newUser.getUsername(), newUser.getFullname());
 		return newUser;
+	}
+
+	public User updateUser(User editUser) {
+		String sql ="update SEC_USER set FULLNAME=?,USERNAME=? WHERE ID=?";
+		jdbcTemplate.update(sql,editUser.getFullname(),editUser.getUsername(),editUser.getId());
+		return editUser;
 	}
 
 	private static class UserRowMaper implements RowMapper<User> {
